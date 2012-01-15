@@ -232,11 +232,31 @@ a:hover {
 
 #main {
 	margin: 10px 0 15px 15px;
+	height: 100%;
 }
 
 #photo {
 	float: left;
 	display: block;
+}
+
+footer {
+	border-top: 1px solid #333;
+	margin-top: 60px;
+	clear: both;
+	width: 100%;
+	height: 200px;
+	padding-top: 4px;
+	padding-left: 15px;
+	background-color: #1E1E1E;
+}
+
+#signature {
+	opacity: 0.4;
+}
+
+#signature:hover {
+	opacity: 1;
 }
 
 #info {
@@ -274,7 +294,9 @@ a:hover {
 	opacity: 1;
 }
 
-
+.clear {
+	clear: both;
+}
 
 /* ==|== media queries ======================================================
    PLACEHOLDER Media Queries for Responsive Design.
