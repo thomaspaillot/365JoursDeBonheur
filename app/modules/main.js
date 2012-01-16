@@ -57,8 +57,8 @@
 					method: 		"flickr.photos.search",
 					tags: 			"bonheur, happiness",
 					api_key: 		"20dcf927582a1508f00c4c42841b4c57",
-					license: 		"4, 2, 1, 5, 7", 
-					sort: 			"date-taken-asc",
+					//license: 		"4, 2, 1, 5, 7", 
+					sort: 			"interestingness-desc",
 					min_taken_date:	model.get("date").get("min_date").toString("yyyy-MM-dd hh:mm:ss"),
 					max_taken_date:	model.get("date").get("max_date").toString("yyyy-MM-dd hh:mm:ss"),  
 					format: 		"json"
@@ -69,14 +69,14 @@
 						console.log("Pas de bonheur aujourd'hui");
 						return
 					};
-
-					var url = "http://farm"+ data.photos.photo[0].farm + ".staticflickr.com/"+ data.photos.photo[0].server +"/"+ data.photos.photo[0].id +"_"+ data.photos.photo[0].secret +"_b.jpg";
-					var original_url = "http://www.flickr.com/photos/"+ data.photos.photo[0].owner +"/"+ data.photos.photo[0].id;
+					var rand = 0; //Math.round(Math.random()*data.photos.total);
+					var url = "http://farm"+ data.photos.photo[rand].farm + ".staticflickr.com/"+ data.photos.photo[rand].server +"/"+ data.photos.photo[rand].id +"_"+ data.photos.photo[rand].secret +"_b.jpg";
+					var original_url = "http://www.flickr.com/photos/"+ data.photos.photo[rand].owner +"/"+ data.photos.photo[rand].id;
 					
 					$.getJSON(flickr_url,
 					{
 						method: 	"flickr.people.getInfo",
-						user_id:	data.photos.photo[0].owner,
+						user_id:	data.photos.photo[rand].owner,
 						api_key: 	"20dcf927582a1508f00c4c42841b4c57",
 						format: 	"json"
 					},
