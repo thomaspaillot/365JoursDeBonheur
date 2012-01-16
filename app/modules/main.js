@@ -57,7 +57,8 @@
 					method: 		"flickr.photos.search",
 					tags: 			"bonheur, happiness",
 					api_key: 		"20dcf927582a1508f00c4c42841b4c57",
-					sort: 			"interestingness-desc",
+					license: 		"4, 2, 1, 5, 7", 
+					sort: 			"date-taken-asc",
 					min_taken_date:	model.get("date").get("min_date").toString("yyyy-MM-dd hh:mm:ss"),
 					max_taken_date:	model.get("date").get("max_date").toString("yyyy-MM-dd hh:mm:ss"),  
 					format: 		"json"
