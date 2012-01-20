@@ -10,17 +10,17 @@
 		initialize: function() {
 			var min = this.get("min_date");
 			var max = this.get("max_date");
-			min.addDays(-1);
+			min.add(-1, "days", true);
 			min.setHours(0);
-			max.addDays(-1);
+			max.add(-1, "", true);
 			max.setHours(23);
 			this.set({ max_date: max, min_date: min });
 		},
 		incrementDate: function() {
 			var min = this.get("min_date");
 			var max = this.get("max_date");
-			min.addDays(1);
-			max.addDays(1);
+			min.add(1, "days", true);
+			max.add(1, "days", true);
 			
 			this.set({ max_date: max, min_date: min });
 			this.trigger("change:date");
@@ -28,8 +28,8 @@
 		decrementDate: function() {
 			var min = this.get("min_date");
 			var max = this.get("max_date");
-			min.addDays(-1);
-			max.addDays(-1);
+			min.add(-1, "days", true);
+			max.add(-1, "days", true);
 			
 			this.set({ max_date: max, min_date: min });
 			this.trigger("change:date");
@@ -50,8 +50,8 @@
 		
 		findPhoto: function() {
 			var model = this;
-			var count = model.get("date").get("min_date").getDayOfYear() + 1;
-
+			var count = model.get("date").get("min_date").dayOfYear() + 1;
+			
 			$.getJSON(flickr_url,
 				{
 					method: 		"flickr.photos.search",
@@ -64,7 +64,6 @@
 					format: 		"json"
 				},
 				function(data) {
-					
 					if(data.photos.total == 0) {
 						console.log("Pas de bonheur aujourd'hui");
 						return
@@ -108,8 +107,8 @@
 				};
 				var t = _.template(template, variables);
 				view.el.html(t);
-				
-				if(view.model.get("day") == Date.today().getDayOfYear()) {
+
+				if(view.model.get("day") == Date.today().dayOfYear()) {
 					$("#next").hide();
 				}
 				
